@@ -36,7 +36,8 @@ class _HomeState extends State<Home> {
                       0
                   ? ''
                   : store.state.calendarState.calendar.genratedMonthsHeading[
-                      store.state.calendarState.calendar.currentEventIndex];
+                          store.state.calendarState.calendar.currentEventIndex]
+                      ['heading'];
           return Scaffold(
             appBar: AppBar(
               backgroundColor: AppColors.appBarColor,

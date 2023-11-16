@@ -23,6 +23,7 @@ class _EventCalendarState extends State<EventCalendar> {
     "SA",
   ];
 
+
   @override
   void initState() {
     super.initState();
@@ -37,7 +38,10 @@ class _EventCalendarState extends State<EventCalendar> {
   Widget build(BuildContext context) {
     return StoreConnector<dynamic, dynamic>(
         converter: (store) => store.state,
-        onInit: (store) => {store.dispatch(genrateCalendar)},
+        onInit: (store) {
+          store.dispatch(genrateCalendar);
+          store.dispatch(setPageController(store, _pageController));
+        },
         builder: (_, state) {
           // TODO: get page controller from store
           List eventCalendar = store.state.calendarState.calendar.eventData;
@@ -104,8 +108,8 @@ class _EventCalendarState extends State<EventCalendar> {
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                         fontSize: 18,
-                                        color: Color(0xAA000000),
-                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xFF000000),
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                   ),

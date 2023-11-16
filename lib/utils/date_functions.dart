@@ -53,6 +53,10 @@ class DateFunctions {
   }
 
   getMonthsHeading(year, month) {
-    return '${months[month - 1]} $year';
+    return {
+      'heading': '${months[month - 1]} $year',
+      'month': month,
+      'year': year
+    };
   }
 }
