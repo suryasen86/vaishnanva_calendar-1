@@ -78,8 +78,7 @@ Function updateCalendarIndex =
         genratedMonthsHeading: monthsHeading,
       ),
     );
-  }
-  if (currentEventIndex == 3) {
+  } else if (currentEventIndex == 3) {
     //TODO: GENRATE 6 MONTH BEFORE
     Map now = store.state.calendarState.calendar.genratedMonthsHeading[0];
     for (int i = 1; i < 7; i++) {
@@ -103,26 +102,23 @@ Function updateCalendarIndex =
     store.dispatch(
       CalendarStateDispatcher(
         eventData: monthsDate.reversed.toList(),
-        currentEventIndex:
-            store.state.calendarState.calendar.currentEventIndex +
-                monthsHeading.length,
+        currentEventIndex: currentEventIndex + monthsHeading.length,
         action: 'BEFORE_MONTHS_GENENRATE',
         pageController: null,
         genratedMonthsHeading: monthsHeading.reversed.toList(),
       ),
     );
+  } else {
+    store.dispatch(
+      CalendarStateDispatcher(
+        eventData: [],
+        currentEventIndex: currentEventIndex + monthsHeading.length,
+        action: 'UPDATE_EVENT_INDEX',
+        pageController: null,
+        genratedMonthsHeading: [],
+      ),
+    );
   }
-
-  print(currentEventIndex);
-  store.dispatch(
-    CalendarStateDispatcher(
-      eventData: [],
-      currentEventIndex: currentEventIndex,
-      action: 'UPDATE_EVENT_INDEX',
-      pageController: null,
-      genratedMonthsHeading: [],
-    ),
-  );
 };
 
 Function genrateCalendar = (Store<AppState> store) async {

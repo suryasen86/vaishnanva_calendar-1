@@ -30,12 +30,8 @@ CalendarState calendarStateReducer(CalendarState state, dynamic action) {
         ...action.genratedMonthsHeading,
         ...state.calendar.genratedMonthsHeading
       ];
-      print(newState.calendar.genratedMonthsHeading);
       newState.calendar.currentEventIndex = action.currentEventIndex;
-      print(newState.calendar.currentEventIndex);
-      print(newState.calendar.pageController);
-      print(newState.calendar.currentEventIndex.toDouble());
-      state.calendar.pageController?.jumpTo(newState.calendar.currentEventIndex.toDouble());
+      state.calendar.pageController?.jumpToPage(action.currentEventIndex);
     }
     return newState;
   } else {
