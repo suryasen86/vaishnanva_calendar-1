@@ -21,6 +21,7 @@ CalendarState calendarStateReducer(CalendarState state, dynamic action) {
         ...state.calendar.genratedMonthsHeading,
         ...action.genratedMonthsHeading
       ];
+      newState.calendar.currentEventIndex = action.currentEventIndex;
     } else if (action.action == 'BEFORE_MONTHS_GENENRATE') {
       newState.calendar.eventData = [
         ...action.eventData,
