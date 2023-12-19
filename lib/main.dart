@@ -30,8 +30,7 @@ class MainApp extends StatelessWidget {
             return GetMaterialApp(
               theme: ThemeData(
                 primaryColor: AppColors.primaryColor,
-                  scaffoldBackgroundColor: AppColors.backgroundColor,
-
+                scaffoldBackgroundColor: AppColors.backgroundColor,
               ),
               debugShowCheckedModeBanner: false,
               home: const Home(),
