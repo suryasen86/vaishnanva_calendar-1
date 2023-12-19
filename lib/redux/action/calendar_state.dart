@@ -72,7 +72,7 @@ Function updateCalendarIndex =
     store.dispatch(
       CalendarStateDispatcher(
         eventData: monthsDate,
-        currentEventIndex: 0,
+        currentEventIndex: currentEventIndex,
         pageController: null,
         action: 'AHEAD_MONTHS_GENENRATE',
         genratedMonthsHeading: monthsHeading,
