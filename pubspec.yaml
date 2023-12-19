@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_redux: ^0.10.0
+  flutter_svg: ^2.0.5
   get: ^4.6.5
   google_fonts: ^4.0.4
   redux: ^5.0.0
@@ -22,3 +23,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/

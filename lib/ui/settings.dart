@@ -62,7 +62,9 @@ class _SettingsState extends State<Settings> {
               ),
               centerTitle: false,
             ),
-            body: const EventCalendar(),
+            body: Column(
+              children: [],
+            ),
           );
         });
   }

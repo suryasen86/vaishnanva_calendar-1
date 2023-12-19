@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vaishnanva_calendar/redux/action/calendar_state.dart';
 import 'package:vaishnanva_calendar/redux/store.dart';
 
@@ -23,7 +24,6 @@ class _EventCalendarState extends State<EventCalendar> {
     "SA",
   ];
 
-
   @override
   void initState() {
     super.initState();
@@ -46,7 +46,7 @@ class _EventCalendarState extends State<EventCalendar> {
           // TODO: get page controller from store
           List eventCalendar = store.state.calendarState.calendar.eventData;
           return Container(
-            padding: const EdgeInsets.only(left: 8, right: 8, top: 32),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 32),
             child: Column(
               children: [
                 Row(
@@ -56,10 +56,13 @@ class _EventCalendarState extends State<EventCalendar> {
                     weeksDays.length,
                     (index) => Text(
                       weeksDays[index],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: Color(0xFF808080),
+                      style: GoogleFonts.roboto(
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          letterSpacing: -0.2,
+                          color: Color(0xFF95928B),
+                        ),
                       ),
                     ),
                   ),
@@ -67,7 +70,7 @@ class _EventCalendarState extends State<EventCalendar> {
                 const SizedBox(height: 20),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 300,
+                  height: 250,
                   alignment: Alignment.center,
                   child: PageView.builder(
                     itemCount: eventCalendar.length,
@@ -100,16 +103,19 @@ class _EventCalendarState extends State<EventCalendar> {
                                       ),
                                     ),
                                     width: (MediaQuery.of(context).size.width -
-                                            16) /
+                                            40) /
                                         7,
                                     padding: const EdgeInsets.all(8),
                                     child: Text(
                                       eventCalendar[index][colIndex][rowIndex],
                                       textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        color: Color(0xFF000000),
-                                        fontWeight: FontWeight.w600,
+                                      style: GoogleFonts.roboto(
+                                        textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color: Color(0xFF333333),
+                                          fontWeight: FontWeight.w400,
+                                          letterSpacing: -.24
+                                        ),
                                       ),
                                     ),
                                   ),
