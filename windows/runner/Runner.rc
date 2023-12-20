@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "vaishnanva_calendar" "\0"
+            VALUE "FileDescription", "devotional_calendar" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "vaishnanva_calendar" "\0"
+            VALUE "InternalName", "devotional_calendar" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "vaishnanva_calendar.exe" "\0"
-            VALUE "ProductName", "vaishnanva_calendar" "\0"
+            VALUE "OriginalFilename", "devotional_calendar.exe" "\0"
+            VALUE "ProductName", "devotional_calendar" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

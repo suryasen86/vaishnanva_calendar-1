@@ -1,4 +1,4 @@
-import 'package:vaishnanva_calendar/redux/action/calendar_state.dart';
+import 'package:devotional_calendar/redux/action/calendar_state.dart';
 
 CalendarState calendarStateReducer(CalendarState state, dynamic action) {
   CalendarState newState = state;

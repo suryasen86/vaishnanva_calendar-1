@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vaishnanva_calendar/redux/action/calendar_state.dart';
-import 'package:vaishnanva_calendar/redux/store.dart';
+import 'package:devotional_calendar/redux/action/calendar_state.dart';
+import 'package:devotional_calendar/redux/store.dart';
 
 class EventCalendar extends StatefulWidget {
   const EventCalendar({super.key});

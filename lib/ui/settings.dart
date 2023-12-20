@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vaishnanva_calendar/common/colors.dart';
-import 'package:vaishnanva_calendar/redux/action/calendar_state.dart';
-import 'package:vaishnanva_calendar/utils/status_bar_utils.dart';
-import 'package:vaishnanva_calendar/widget/default_text.dart';
-import 'package:vaishnanva_calendar/widget/event_calendar.dart';
+import 'package:devotional_calendar/common/colors.dart';
+import 'package:devotional_calendar/redux/action/calendar_state.dart';
+import 'package:devotional_calendar/utils/status_bar_utils.dart';
+import 'package:devotional_calendar/widget/default_text.dart';
+import 'package:devotional_calendar/widget/event_calendar.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});

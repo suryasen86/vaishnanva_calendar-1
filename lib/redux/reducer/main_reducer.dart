@@ -1,4 +1,4 @@
-import 'package:vaishnanva_calendar/redux/reducer/calendar_reducer.dart';
+import 'package:devotional_calendar/redux/reducer/calendar_reducer.dart';
 
 import '../action/main_action.dart';
 

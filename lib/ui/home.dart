@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vaishnanva_calendar/common/colors.dart';
-import 'package:vaishnanva_calendar/ui/components/date-details.dart';
-import 'package:vaishnanva_calendar/ui/settings.dart';
-import 'package:vaishnanva_calendar/utils/status_bar_utils.dart';
-import 'package:vaishnanva_calendar/widget/default_text.dart';
-import 'package:vaishnanva_calendar/widget/event_calendar.dart';
+import 'package:devotional_calendar/common/colors.dart';
+import 'package:devotional_calendar/ui/components/date-details.dart';
+import 'package:devotional_calendar/ui/settings.dart';
+import 'package:devotional_calendar/utils/status_bar_utils.dart';
+import 'package:devotional_calendar/widget/default_text.dart';
+import 'package:devotional_calendar/widget/event_calendar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
@@ -53,11 +53,11 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Icon(
-                      Icons.today,
-                    ),
-                    const SizedBox(width: 16),
-                    const Icon(Icons.search),
+                    // const Icon(
+                    //   Icons.today,
+                    // ),
+                    // const SizedBox(width: 16),
+                    // const Icon(Icons.search),
                     const SizedBox(width: 16),
                     InkWell(
                       onTap: () {

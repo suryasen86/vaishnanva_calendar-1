@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vaisnava.Calendar">
    <application
-        android:label="vaishnanva_calendar"
+        android:label="devotional_calendar"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

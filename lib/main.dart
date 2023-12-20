@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
-import 'package:vaishnanva_calendar/common/colors.dart';
-import 'package:vaishnanva_calendar/redux/action/calendar_state.dart';
-import 'package:vaishnanva_calendar/redux/store.dart';
+import 'package:devotional_calendar/common/colors.dart';
+import 'package:devotional_calendar/redux/action/calendar_state.dart';
+import 'package:devotional_calendar/redux/store.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get/get.dart';
-import 'package:vaishnanva_calendar/ui/home.dart';
+import 'package:devotional_calendar/ui/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vaishnanva_calendar/utils/status_bar_utils.dart';
+import 'package:devotional_calendar/utils/status_bar_utils.dart';
 
 void main() {
   runApp(MainApp(

@@ -1,3 +1,3 @@
-# vaishnanva_calendar
+# devotional_calendar
 
 A new Flutter project.

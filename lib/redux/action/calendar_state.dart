@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vaishnanva_calendar/utils/date_functions.dart';
+import 'package:devotional_calendar/utils/date_functions.dart';
 
 import 'main_action.dart';
 
