@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DefaultText extends StatefulWidget {
   const DefaultText({super.key});
@@ -22,13 +23,15 @@ class _DefaultTextState extends State<DefaultText> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: const Text(
+      child: Text(
         "Hare Krishna\nHare Krishna\nKrishna Krishna\nHare Hare\n Hare Rama\nHare Rama\nRama Rama\nHare Hare",
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.w600,
-          color: Colors.grey,
-          height: 1.4,
+        style: GoogleFonts.roboto(
+          textStyle: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Color.fromARGB(159, 158, 158, 158),
+            height: 1.4,
+          ),
         ),
         textAlign: TextAlign.center,
       ),

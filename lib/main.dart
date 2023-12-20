@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:vaishnanva_calendar/common/colors.dart';
+import 'package:vaishnanva_calendar/redux/action/calendar_state.dart';
 import 'package:vaishnanva_calendar/redux/store.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get/get.dart';
 import 'package:vaishnanva_calendar/ui/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vaishnanva_calendar/utils/status_bar_utils.dart';
 
 void main() {
   runApp(MainApp(
@@ -23,14 +26,25 @@ class MainApp extends StatelessWidget {
       store: store,
       child: StoreConnector<dynamic, dynamic>(
           converter: (store) => store,
-          onInit: (store) async {},
+          onInit: (store) async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            store.dispatch(
+              updateThemeMode(store, prefs.getString('themeMode') ?? "LIGHT"),
+            );
+            (prefs.getString('themeMode') ?? "LIGHT") == 'LIGHT'
+                ? StatusBarUtil.instance.lightThemeStatusBar()
+                : StatusBarUtil.instance.darkThemeStatusBar();
+          },
           onDispose: (store) => {},
           onInitialBuild: (viewModel) {},
           builder: (_, store) {
             return GetMaterialApp(
               theme: ThemeData(
-                primaryColor: AppColors.primaryColor,
-                scaffoldBackgroundColor: AppColors.backgroundColor,
+                primaryColor: AppColors.lightMode.primaryColor,
+                scaffoldBackgroundColor:
+                    store.state.calendarState.calendar.themeMode == 'LIGHT'
+                        ? AppColors.lightMode.backgroundColor
+                        : AppColors.darkMode.backgroundColor,
               ),
               debugShowCheckedModeBanner: false,
               home: const Home(),

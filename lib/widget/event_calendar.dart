@@ -43,8 +43,12 @@ class _EventCalendarState extends State<EventCalendar> {
           store.dispatch(setPageController(store, _pageController));
         },
         builder: (_, state) {
-          // TODO: get page controller from store
           List eventCalendar = store.state.calendarState.calendar.eventData;
+          Map currentHeadingState =
+              store.state.calendarState.calendar.genratedMonthsHeading[
+                  store.state.calendarState.calendar.currentEventIndex];
+          Map selectedDate = store.state.calendarState.calendar.selectedDate;
+
           return Container(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 32),
             child: Column(
@@ -57,11 +61,14 @@ class _EventCalendarState extends State<EventCalendar> {
                     (index) => Text(
                       weeksDays[index],
                       style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
+                        textStyle: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 12,
                           letterSpacing: -0.2,
-                          color: Color(0xFF95928B),
+                          color: store.state.calendarState.calendar.themeMode ==
+                                  'LIGHT'
+                              ? Color(0xFF95928B)
+                              : Color(0xFF969696),
                         ),
                       ),
                     ),
@@ -79,7 +86,7 @@ class _EventCalendarState extends State<EventCalendar> {
                       updateCalendarIndex(store, value);
                     },
                     itemBuilder: (context, index) {
-                      return Container(
+                      return SizedBox(
                         width: MediaQuery.of(context).size.width,
                         height: 300,
                         child: Column(
@@ -94,27 +101,58 @@ class _EventCalendarState extends State<EventCalendar> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: List.generate(
                                   eventCalendar[index][colIndex].length,
-                                  (rowIndex) => Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
+                                  (rowIndex) => InkWell(
+                                    onTap: () {
+                                      store.dispatch(
+                                        selectDate(
+                                          store,
+                                          int.parse(eventCalendar[index]
+                                              [colIndex][rowIndex]),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
                                         color: Colors.transparent,
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: selectedDate['date']
+                                                          .toString() ==
+                                                      eventCalendar[index]
+                                                              [colIndex]
+                                                          [rowIndex] &&
+                                                  currentHeadingState['year'] ==
+                                                      selectedDate['year'] &&
+                                                  selectedDate['month'] ==
+                                                      currentHeadingState[
+                                                          'month']
+                                              ? store.state.calendarState
+                                                          .calendar.themeMode ==
+                                                      'LIGHT'
+                                                  ? Colors.black
+                                                  : const Color(0xFFE0EDF6)
+                                              : Colors.transparent,
+                                        ),
                                       ),
-                                    ),
-                                    width: (MediaQuery.of(context).size.width -
-                                            40) /
-                                        7,
-                                    padding: const EdgeInsets.all(8),
-                                    child: Text(
-                                      eventCalendar[index][colIndex][rowIndex],
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.roboto(
-                                        textStyle: const TextStyle(
-                                          fontSize: 16,
-                                          color: Color(0xFF333333),
-                                          fontWeight: FontWeight.w400,
-                                          letterSpacing: -.24
+                                      width:
+                                          (MediaQuery.of(context).size.width -
+                                                  40) /
+                                              7,
+                                      padding: const EdgeInsets.all(8),
+                                      child: Text(
+                                        eventCalendar[index][colIndex]
+                                            [rowIndex],
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.roboto(
+                                          textStyle: TextStyle(
+                                              fontSize: 16,
+                                              color: store.state.calendarState
+                                                          .calendar.themeMode ==
+                                                      'LIGHT'
+                                                  ? Color(0xFF333333)
+                                                  : Color(0xFFE0EDF6),
+                                              fontWeight: FontWeight.w400,
+                                              letterSpacing: -.24),
                                         ),
                                       ),
                                     ),

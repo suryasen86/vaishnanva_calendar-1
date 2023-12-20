@@ -6,6 +6,7 @@ CalendarState calendarStateReducer(CalendarState state, dynamic action) {
   if (action is CalendarStateDispatcher) {
     if (action.action == 'UPDATE_EVENT_INDEX') {
       newState.calendar.currentEventIndex = action.currentEventIndex;
+      newState.calendar.selectedDate = {};
     } else if (action.action == 'SET_PAGE_CONTROLLER') {
       newState.calendar.pageController = action.pageController;
     } else if (action.action == 'INITIAL_MONTHS') {
@@ -33,6 +34,10 @@ CalendarState calendarStateReducer(CalendarState state, dynamic action) {
       ];
       newState.calendar.currentEventIndex = action.currentEventIndex;
       state.calendar.pageController?.jumpToPage(action.currentEventIndex);
+    } else if (action.action == 'SELECT_DATE') {
+      newState.calendar.selectedDate = action.selectedDate;
+    } else if (action.action == 'UPDATE_THEME') {
+      newState.calendar.themeMode = action.themeMode;
     }
     return newState;
   } else {

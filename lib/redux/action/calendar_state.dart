@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vaishnanva_calendar/utils/date_functions.dart';
 
 import 'main_action.dart';
@@ -20,13 +21,17 @@ class CalendarStateDispatcher {
   List eventData = [];
   int currentEventIndex = 0;
   String action = '';
+  Map selectedDate = {};
   List genratedMonthsHeading;
+  String themeMode = '';
   dynamic pageController;
 
   CalendarStateDispatcher({
     required this.eventData,
     required this.currentEventIndex,
     required this.action,
+    required this.themeMode,
+    required this.selectedDate,
     required this.genratedMonthsHeading,
     required this.pageController,
   });
@@ -35,6 +40,8 @@ class CalendarStateDispatcher {
         eventData: [],
         currentEventIndex: 0,
         action: '',
+        selectedDate: {},
+        themeMode: '',
         genratedMonthsHeading: [],
         pageController: null,
       );
@@ -74,6 +81,8 @@ Function updateCalendarIndex =
         eventData: monthsDate,
         currentEventIndex: currentEventIndex,
         pageController: null,
+        selectedDate: {},
+        themeMode: '',
         action: 'AHEAD_MONTHS_GENENRATE',
         genratedMonthsHeading: monthsHeading,
       ),
@@ -105,6 +114,8 @@ Function updateCalendarIndex =
         currentEventIndex: currentEventIndex + monthsHeading.length,
         action: 'BEFORE_MONTHS_GENENRATE',
         pageController: null,
+        selectedDate: {},
+        themeMode: '',
         genratedMonthsHeading: monthsHeading.reversed.toList(),
       ),
     );
@@ -115,10 +126,51 @@ Function updateCalendarIndex =
         currentEventIndex: currentEventIndex + monthsHeading.length,
         action: 'UPDATE_EVENT_INDEX',
         pageController: null,
+        selectedDate: {},
+        themeMode: '',
         genratedMonthsHeading: [],
       ),
     );
   }
+};
+
+//Update Date
+Function selectDate = (Store<AppState> store, int date) async {
+  Map currentState = store.state.calendarState.calendar.genratedMonthsHeading[
+      store.state.calendarState.calendar.currentEventIndex];
+  store.dispatch(
+    CalendarStateDispatcher(
+      eventData: [],
+      currentEventIndex: 0,
+      action: 'SELECT_DATE',
+      pageController: null,
+      themeMode: '',
+      selectedDate: {
+        'date': date,
+        'month': currentState['month'],
+        'year': currentState['year']
+      },
+      genratedMonthsHeading: [],
+    ),
+  );
+};
+
+//Update ThemeMode
+Function updateThemeMode = (Store<AppState> store, String mode) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('themeMode', mode);
+
+  store.dispatch(
+    CalendarStateDispatcher(
+      eventData: [],
+      currentEventIndex: 0,
+      action: 'UPDATE_THEME',
+      pageController: null,
+      themeMode: mode,
+      selectedDate: {},
+      genratedMonthsHeading: [],
+    ),
+  );
 };
 
 Function genrateCalendar = (Store<AppState> store) async {
@@ -169,6 +221,8 @@ Function genrateCalendar = (Store<AppState> store) async {
       currentEventIndex: 6, // currentMonth index
       action: 'INITIAL_MONTHS',
       genratedMonthsHeading: monthsHeading,
+      selectedDate: {},
+      themeMode: '',
       pageController: null,
     ),
   );
@@ -181,6 +235,8 @@ Function setPageController =
       eventData: [],
       currentEventIndex: 6, // currentMonth index
       action: 'SET_PAGE_CONTROLLER',
+      selectedDate: {},
+      themeMode: '',
       genratedMonthsHeading: [],
       pageController: controller,
     ),
